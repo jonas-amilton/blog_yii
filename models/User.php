@@ -33,7 +33,8 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             [['username', 'password'], 'required'],
-            [['username', 'password'], 'string', 'max' => 255],
+            [['username'], 'string', 'max' => 255],
+            [['password'], 'string', 'min' => 8, 'max' => 255],
             [['authKey', 'accessToken'], 'string', 'max' => 32],
             [['username'], 'unique'],
         ];
@@ -46,8 +47,8 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             'id' => 'ID',
-            'username' => 'Username',
-            'password' => 'Password',
+            'username' => 'Nome de usuário',
+            'password' => 'Senha',
             'authKey' => 'Auth Key',
             'accessToken' => 'Access Token',
         ];
