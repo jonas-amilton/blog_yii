@@ -49,11 +49,11 @@ class Post extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'content' => 'Content',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'user_id' => 'User ID',
+            'title' => 'Titulo',
+            'content' => 'Conteúdo',
+            'created_at' => 'Criado em',
+            'updated_at' => 'Atualizado em',
+            'user_id' => 'ID do Usuário',
         ];
     }
 
