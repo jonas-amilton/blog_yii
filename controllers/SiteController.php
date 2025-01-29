@@ -8,7 +8,7 @@ use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
-use app\models\ContactForm;
+use app\models\RegisterForm;
 
 class SiteController extends Controller
 {
@@ -99,21 +99,24 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays contact page.
+     * Displays register page.
      *
      * @return Response|string
      */
-    public function actionContact()
+    public function actionRegister()
     {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
+        $model = new RegisterForm();
+        if (
+            Yii::$app->request->isPost
+            && $model->load(Yii::$app->request->post())
+            && $model->validate()
+        ) {
+            Yii::$app->session->setFlash('registerFormSubmitted');
+            
             return $this->refresh();
         }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
+
+        return $this->render('register', compact('model'));
     }
 
     /**

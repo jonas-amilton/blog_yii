@@ -41,7 +41,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             'items' => [
                 ['label' => 'Feed', 'url' => ['/site/index']],
                 ['label' => 'Criar Post', 'url' => ['/post/index']],
-                ['label' => 'Contact', 'url' => ['/site/contact']],
+                ['label' => 'Cadastre-se', 'url' => ['/site/register']],
                 Yii::$app->user->isGuest
                     ? ['label' => 'Login', 'url' => ['/site/login']]
                     : '<li class="nav-item">'
