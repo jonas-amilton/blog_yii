@@ -17,6 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php if (Yii::$app->session->hasFlash('registerFormSubmitted')): ?>
         <div class="alert alert-success">
             Usuário cadastrado com sucesso!
+            <a href="<?= Url::to(['site/login']); ?>">Faça Login</a>
         </div>
     <?php else: ?>
 
