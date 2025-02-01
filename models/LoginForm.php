@@ -30,6 +30,8 @@ class LoginForm extends Model
             [['username', 'password'], 'required'],
             // rememberMe must be a boolean value
             ['rememberMe', 'boolean'],
+            // username is validated by validateUsername()
+            ['username', 'validateUsername'],
             // password is validated by validatePassword()
             ['password', 'validatePassword'],
         ];
@@ -49,6 +51,24 @@ class LoginForm extends Model
     }
 
     /**
+     * Validates the username.
+     * This method serves as the inline validation for username.
+     *
+     * @param string $attribute the attribute currently being validated
+     * @param array $params the additional name-value pairs given in the rule
+     */
+    public function validateUsername($attribute, $params)
+    {
+        if (!$this->hasErrors()) {
+            $user = $this->getUser();
+
+            if (!$user) {
+                $this->addError($attribute, 'Nome de usuário incorreto!');
+            }
+        }
+    }
+
+    /**
      * Validates the password.
      * This method serves as the inline validation for password.
      *
@@ -60,8 +80,15 @@ class LoginForm extends Model
         if (!$this->hasErrors()) {
             $user = $this->getUser();
 
-            if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect username or password.');
+            $passwordIsValid = Yii::$app->getSecurity()
+                ->validatePassword($this->password, $user->password);
+
+            if (strlen($this->password) < 8) {
+                $this->addError($attribute, 'A senha deve ter no mínimo 8 caracteres!');
+            }
+
+            if (!$passwordIsValid) {
+                $this->addError($attribute, 'Senha incorreta!');
             }
         }
     }
