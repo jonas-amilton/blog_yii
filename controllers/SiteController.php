@@ -61,6 +61,11 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        if (!Yii::$app->user->identity) {
+            Yii::$app->session->setFlash('warning', 'Você precisa estar logado para acessar essa página.');
+            return $this->redirect(['site/login']);
+        }
+
         return $this->render('index');
     }
 
@@ -112,20 +117,10 @@ class SiteController extends Controller
             && $model->validate()
         ) {
             Yii::$app->session->setFlash('registerFormSubmitted');
-            
+
             return $this->refresh();
         }
 
         return $this->render('register', compact('model'));
-    }
-
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionAbout()
-    {
-        return $this->render('about');
     }
 }
