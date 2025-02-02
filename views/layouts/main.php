@@ -39,9 +39,12 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav'],
             'items' => [
-                ['label' => 'Feed', 'url' => ['/site/index']],
-                ['label' => 'Criar Post', 'url' => ['/post/index']],
-                ['label' => 'Cadastre-se', 'url' => ['/site/register']],
+                !Yii::$app->user->isGuest ? ['label' => 'Feed', 'url' => ['/site/index']]
+                    : '',
+                !Yii::$app->user->isGuest ? ['label' => 'Criar Post', 'url' => ['/post/index']]
+                    : '',
+                Yii::$app->user->isGuest ? ['label' => 'Cadastre-se', 'url' => ['/site/register']]
+                    : '',
                 Yii::$app->user->isGuest
                     ? ['label' => 'Login', 'url' => ['/site/login']]
                     : '<li class="nav-item">'
@@ -79,5 +82,6 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 
     <?php $this->endBody() ?>
 </body>
+
 </html>
 <?php $this->endPage() ?>
