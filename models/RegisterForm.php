@@ -73,8 +73,8 @@ class RegisterForm extends Model
 
         $user->username = $this->username;
         $user->password = self::encodePassword($this->password);
-        $user->authKey = Yii::$app->security->generateRandomString();
-        $user->accessToken = Yii::$app->security->generateRandomString();
+        $user->auth_key = Yii::$app->security->generateRandomString();
+        $user->access_token = Yii::$app->security->generateRandomString();
 
         try {
             $user->save();

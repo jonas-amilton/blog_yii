@@ -11,8 +11,8 @@ use yii\web\IdentityInterface;
  * @property int $id
  * @property string $username
  * @property string $password
- * @property string|null $authKey
- * @property string|null $accessToken
+ * @property string|null $auth_key
+ * @property string|null $access_token
  *
  * @property Posts[] $posts
  */
@@ -35,7 +35,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             [['username', 'password'], 'required'],
             [['username'], 'string', 'max' => 255],
             [['password'], 'string', 'min' => 8, 'max' => 255],
-            [['authKey', 'accessToken'], 'string', 'max' => 32],
+            [['auth_key', 'access_token'], 'string', 'max' => 32],
             [['username'], 'unique'],
         ];
     }
@@ -49,8 +49,8 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             'id' => 'ID',
             'username' => 'Nome de usuário',
             'password' => 'Senha',
-            'authKey' => 'Auth Key',
-            'accessToken' => 'Access Token',
+            'auth_key' => 'Auth Key',
+            'access_token' => 'Access Token',
         ];
     }
 
@@ -93,7 +93,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public function getAuthKey()
     {
-        return $this->authKey;
+        return $this->auth_key;
     }
 
     /**
@@ -101,7 +101,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public function validateAuthKey($authKey)
     {
-        return $this->authKey === $authKey;
+        return $this->auth_key === $authKey;
     }
 
     /**
