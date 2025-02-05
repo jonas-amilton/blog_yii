@@ -20,13 +20,13 @@ class UploadForm extends Model
         ];
     }
 
-    public function upload()
+    public function upload($idCreatedPost)
     {
         if ($this->validate()) {
 
             $alias = Yii::getAlias('@uploads');
 
-            $this->image_file->saveAs($alias . $this->image_file->baseName . '.' . $this->image_file->extension);
+            $this->image_file->saveAs($alias . "{$this->image_file->baseName}_0{$idCreatedPost}" . '.' . $this->image_file->extension);
             return true;
         } else {
             return false;
