@@ -16,8 +16,8 @@ class m250125_001921_create_posts_table extends Migration
             'id' => $this->primaryKey(),
             'title' => $this->string()->notNull(),
             'content' => $this->text()->notNull(),
-            'created_at' => $this->dateTime(),
-            'updated_at' => $this->dateTime(),
+            'created_at' => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP'),
+            'updated_at' => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP'),
             'user_id' => $this->integer()->notNull(),
         ]);
 

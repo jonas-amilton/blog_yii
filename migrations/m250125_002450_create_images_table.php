@@ -16,8 +16,8 @@ class m250125_002450_create_images_table extends Migration
             'id' => $this->primaryKey(),
             'name' => $this->string()->notNull(),
             'post_id' => $this->integer()->notNull(),
-            'created_at' => $this->dateTime(),
-            'updated_at' => $this->dateTime(),
+            'created_at' => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP'),
+            'updated_at' => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP'),
             'extension' => $this->string()->notNull(),
         ]);
 
