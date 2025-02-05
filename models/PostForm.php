@@ -15,7 +15,7 @@ class PostForm extends Model
 
     public function __construct()
     {
-        $this->user_id = Yii::$app->user->identity->id;
+        $this->user_id = Yii::$app->user->identity->id ?? null;
     }
 
     /**
@@ -74,16 +74,10 @@ class PostForm extends Model
     {
         $modelImage = new Image();
 
-        if (!$modelImage->validate()) {
-            return false;
-        }
-
         $modelImage->extension = $this->image_file->extension;
         $modelImage->name = $nameUploadedImage;
         $modelImage->post_id = $idCreatedPost;
 
         $modelImage->save();
-
-        return true;
     }
 }
