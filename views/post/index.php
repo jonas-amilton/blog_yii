@@ -2,6 +2,9 @@
 
 use yii\bootstrap5\ActiveForm;
 use yii\bootstrap5\Html;
+
+$this->title = 'Criar Post';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 
@@ -10,16 +13,19 @@ use yii\bootstrap5\Html;
         <div class="card-body">
             <?php $form = ActiveForm::begin([
                 'id' => 'post-form',
-                'action' => ['post/create-post'],
+                'action' => ['post/create'],
                 'method' => 'post',
+                'options' => ['enctype' => 'multipart/form-data']
             ]); ?>
 
-            <?= $form->field($model, 'title')->textInput(['autofocus' => true]) ?>
+            <?= $form->field($modelPostForm, 'title')->textInput(['autofocus' => true]) ?>
 
-            <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
+            <?= $form->field($modelPostForm, 'content')->textarea(['rows' => 6]) ?>
+
+            <?= $form->field($modelPostForm, 'image_file')->fileInput() ?>
 
             <div class="form-group">
-                <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'post-button']) ?>
+                <?= Html::submitButton('Criar', ['class' => 'btn btn-primary', 'name' => 'post-button']) ?>
             </div>
 
             <?php ActiveForm::end(); ?>
