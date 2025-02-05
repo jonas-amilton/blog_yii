@@ -12,6 +12,9 @@ $config = [
         '@uploads' => '@app/web/uploads/',
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+        '@web' => '/',
+        '@showImage' => '@web/uploads/',
+        '@webroot' => dirname(__DIR__) . '/web'
     ],
     'components' => [
         'request' => [
