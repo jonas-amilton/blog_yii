@@ -9,18 +9,13 @@ $this->title = Yii::$app->name;
     <div class="container">
 
         <div class="row mb-3">
-            <h1 class="display-1">The Blog</h1>
+            <h1 class="display-1"><?= Yii::$app->name; ?></h1>
         </div>
 
-        <?= $this->render('../layouts/partials/_card_principal') ?>
+        <?= $this->render('../layouts/partials/_card_principal', compact('lastPost')) ?>
 
         <div class="row">
-            <?= $this->render('../layouts/partials/_card_secondary') ?>
-            <?= $this->render('../layouts/partials/_card_secondary') ?>
-            <?= $this->render('../layouts/partials/_card_secondary') ?>
-            <?= $this->render('../layouts/partials/_card_secondary') ?>
-            <?= $this->render('../layouts/partials/_card_secondary') ?>
-            <?= $this->render('../layouts/partials/_card_secondary') ?>
+            <?= $this->render('../layouts/partials/_card_secondary', compact('posts')) ?>
         </div>
     </div>
 

@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
+use app\models\Post;
 use app\models\RegisterForm;
 
 class SiteController extends Controller
@@ -66,7 +67,15 @@ class SiteController extends Controller
             return $this->redirect(['site/login']);
         }
 
-        return $this->render('index');
+        $posts = Post::find()
+            ->with(['images', 'user'])
+            ->select(['id', 'title', 'content', 'created_at', 'updated_at', 'user_id'])
+            ->orderBy('created_at DESC')
+            ->all();
+
+        $lastPost = $posts[0];
+
+        return $this->render('index', compact('posts', 'lastPost'));
     }
 
     /**
