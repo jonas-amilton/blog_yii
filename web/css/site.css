@@ -7,6 +7,22 @@ main > .container {
     border: none !important;
 }
 
+/* Foto de perfil */
+.profile-img {
+    border-radius: 50%;
+    width: 20%;
+    position: absolute;
+    bottom: -50px;
+    left: 1em;
+    z-index: 1;
+}
+
+/* Capa do perfil */
+.profile-cover{
+    height: 22em;
+    object-fit: cover;
+}
+
 .footer {
     background-color: #f5f5f5;
     font-size: .9em;
