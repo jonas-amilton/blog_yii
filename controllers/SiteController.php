@@ -8,8 +8,8 @@ use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
-use app\models\Post;
 use app\models\RegisterForm;
+use app\services\PostService;
 
 class SiteController extends Controller
 {
@@ -67,13 +67,10 @@ class SiteController extends Controller
             return $this->redirect(['site/login']);
         }
 
-        $posts = Post::find()
-            ->with(['images', 'user'])
-            ->select(['id', 'title', 'content', 'created_at', 'updated_at', 'user_id'])
-            ->orderBy('created_at DESC')
-            ->all();
+        $postService = new PostService();
 
-        $lastPost = $posts[0];
+        $lastPost = $postService->getLastPost();
+        $posts = $postService->getSecondaryPosts();
 
         return $this->render('index', compact('posts', 'lastPost'));
     }
