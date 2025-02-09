@@ -21,6 +21,7 @@
                     <h5 class="card-title"><?= $post->title; ?></h5>
                     <p class="card-text"><?= $post->content; ?></p>
                 </div>
+                <?= $this->render('./_btn_delete', ['id' => $post->id, 'userId' => $post->user->id]); ?>
             </div>
         </div>
     <?php endif; ?>

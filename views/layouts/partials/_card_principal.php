@@ -23,5 +23,6 @@
                 </p>
             </div>
         </div>
+        <?= $this->render('./_btn_delete', ['id' => $lastPost->id, 'userId' => $lastPost->user_id]); ?>
     </div>
 </div>
