@@ -24,5 +24,9 @@ $this->title = Yii::$app->name;
             </div>
         <?php endif; ?>
     </div>
-
 </div>
+
+<?= $this->render(
+    '../layouts/partials/_create_post_modal',
+    compact('modelPostForm')
+); ?>

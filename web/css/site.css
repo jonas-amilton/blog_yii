@@ -32,6 +32,22 @@ main > .container {
     right: 5%;
 }
 
+/* Botão de criar publicação */
+.btn-create-post {
+  background-color: #0a53be;
+  border: none;
+  color: #fff;
+  border-radius: 50%;
+  height: 3.8em;
+  position: fixed;
+  bottom: 10%;
+  right: 10%;
+}
+
+.btn-create-post:hover {
+  background-color: #0759d4;
+}
+
 .footer {
     background-color: #f5f5f5;
     font-size: .9em;

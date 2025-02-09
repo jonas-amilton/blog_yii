@@ -7,8 +7,11 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\RegisterForm;
+use app\models\{
+    LoginForm,
+    PostForm,
+    RegisterForm
+};
 use app\services\PostService;
 
 class SiteController extends Controller
@@ -66,13 +69,14 @@ class SiteController extends Controller
             Yii::$app->session->setFlash('warning', 'Você precisa estar logado para acessar essa página.');
             return $this->redirect(['site/login']);
         }
+        $modelPostForm = new PostForm();
 
         $postService = new PostService();
 
         $lastPost = $postService->getLastPost();
         $posts = $postService->getSecondaryPosts();
 
-        return $this->render('index', compact('posts', 'lastPost'));
+        return $this->render('index', compact('posts', 'lastPost', 'modelPostForm'));
     }
 
     /**
