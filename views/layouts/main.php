@@ -41,7 +41,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             'items' => [
                 !Yii::$app->user->isGuest ? ['label' => 'Feed', 'url' => ['/site/index']]
                     : '',
-                !Yii::$app->user->isGuest ? ['label' => 'Criar Post', 'url' => ['/post/index']]
+                !Yii::$app->user->isGuest ? ['label' => 'Meu perfil', 'url' => ['/profile/index']]
                     : '',
                 Yii::$app->user->isGuest ? ['label' => 'Cadastre-se', 'url' => ['/site/register']]
                     : '',
