@@ -12,11 +12,17 @@ $this->title = Yii::$app->name;
             <h1 class="display-1"><?= Yii::$app->name; ?></h1>
         </div>
 
-        <?= $this->render('../layouts/partials/_card_principal', compact('lastPost')) ?>
+        <?php if ($lastPost): ?>
+            <?= $this->render('../layouts/partials/_card_principal', compact('lastPost')) ?>
+        <?php else: ?>
+            <h3>Não há publicações no blog!</h3>
+        <?php endif; ?>
 
-        <div class="row">
-            <?= $this->render('../layouts/partials/_card_secondary', compact('posts')) ?>
-        </div>
+        <?php if ($posts): ?>
+            <div class="row">
+                <?= $this->render('../layouts/partials/_card_secondary', compact('posts')) ?>
+            </div>
+        <?php endif; ?>
     </div>
 
 </div>
