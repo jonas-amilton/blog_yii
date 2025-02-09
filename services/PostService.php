@@ -30,6 +30,10 @@ class PostService
 
     public function getLastPost()
     {
+        if (!$this->posts) {
+            return [];
+        }
+
         return $this->posts[0];
     }
 
