@@ -10,7 +10,6 @@ use Yii;
  * @property int $id
  * @property string $name
  * @property int $post_id
- * @property int $avatar_id
  * @property string|null $created_at
  * @property string|null $updated_at
  * @property string $extension
@@ -48,11 +47,11 @@ class Image extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'post_id' => 'Post ID',
+            'name' => 'Nome da Imagem',
+            'post_id' => 'ID da Publicação',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
-            'extension' => 'Extension',
+            'extension' => 'Extensão',
         ];
     }
 
