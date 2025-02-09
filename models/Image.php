@@ -16,7 +16,6 @@ use Yii;
  * @property string $extension
  *
  * @property Posts $post
- * @property Profile $profile
  */
 class Image extends \yii\db\ActiveRecord
 {
@@ -36,7 +35,6 @@ class Image extends \yii\db\ActiveRecord
         return [
             [['name', 'post_id', 'extension'], 'required'],
             [['post_id'], 'integer'],
-            [['avatar_id', 'integer']],
             [['created_at', 'updated_at'], 'safe'],
             [['name', 'extension'], 'string', 'max' => 255],
             [['post_id'], 'exist', 'skipOnError' => true, 'targetClass' => Post::class, 'targetAttribute' => ['post_id' => 'id']],
@@ -52,7 +50,6 @@ class Image extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Name',
             'post_id' => 'Post ID',
-            'avatar_id' => 'Id do Avatar',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'extension' => 'Extension',
@@ -67,15 +64,5 @@ class Image extends \yii\db\ActiveRecord
     public function getPost()
     {
         return $this->hasOne(Post::class, ['id' => 'post_id']);
-    }
-
-    /**
-     * Gets query for [[Profile]].
-     * 
-     * @return \yii\db\ActiveQuery
-     */
-    public function getProfile()
-    {
-        return $this->hasOne(Profile::class, ['id' => 'avatar_id']);
     }
 }
