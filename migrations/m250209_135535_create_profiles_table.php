@@ -15,7 +15,6 @@ class m250209_135535_create_profiles_table extends Migration
         $this->createTable('{{%profiles}}', [
             'id' => $this->primaryKey(),
             'user_id' => $this->integer()->notNull(),
-            'avatar_id' => $this->integer()->notNull(),
             'bio' => $this->string(60),
             'age' => $this->integer()->notNull(),
             'gender' => $this->string(2),
@@ -31,15 +30,6 @@ class m250209_135535_create_profiles_table extends Migration
             'id',
             'CASCADE'
         );
-
-        $this->addForeignKey(
-            'fk-profiles-avatar_id',
-            'profiles',
-            'avatar_id',
-            'images',
-            'id',
-            'CASCADE'
-        );
     }
 
     /**
@@ -52,11 +42,6 @@ class m250209_135535_create_profiles_table extends Migration
         $this->dropForeignKey(
             'fk-profiles-user_id',
             'users'
-        );
-
-        $this->dropForeignKey(
-            'fk-profiles-avatar_id',
-            'images'
         );
     }
 }
