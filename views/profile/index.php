@@ -13,7 +13,7 @@
     <div class="card-body">
         <figure class="text-start">
             <blockquote class="blockquote">
-                <p>Username</p>
+                <p><?= Yii::$app->user->identity->username; ?>#<?= Yii::$app->user->identity->id; ?></p>
             </blockquote>
             <figcaption class="blockquote-footer">
                 Someone famous in <cite title="Source Title">Bio</cite>
@@ -89,3 +89,8 @@
         </div>
     </div>
 </div>
+
+<?= $this->render(
+    '../layouts/partials/_edit_profile_modal',
+    compact('modelProfileForm')
+); ?>
