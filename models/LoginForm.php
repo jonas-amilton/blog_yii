@@ -63,7 +63,7 @@ class LoginForm extends Model
             $user = $this->getUser();
 
             if (!$user) {
-                $this->addError($attribute, 'Nome de usuário incorreto!');
+                $this->addError($attribute, 'Usuário ainda não cadastrado!');
             }
         }
     }
