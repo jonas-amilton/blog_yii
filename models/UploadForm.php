@@ -20,6 +20,16 @@ class UploadForm extends Model
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'image_file' => 'Imagem',
+        ];
+    }
+
     public function upload($idCreatedPost)
     {
         if ($this->validate()) {
@@ -37,12 +47,11 @@ class UploadForm extends Model
     {
         $filenameToDelete = Yii::getAlias('@uploads') . $filename;
 
-        if (!$filenameToDelete) {
-            return false;
+        if ($filenameToDelete) {
+            unlink($filenameToDelete);
+
+            return true;
         }
-
-        unlink($filenameToDelete);
-
-        return true;
+        return false;
     }
 }
