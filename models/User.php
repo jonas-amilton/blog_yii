@@ -15,7 +15,7 @@ use yii\web\IdentityInterface;
  * @property string|null $access_token
  *
  * @property Posts[] $posts
- * @property Profile $profile
+ * @property Profiles[] $profiles
  */
 class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
@@ -63,6 +63,16 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function getPosts()
     {
         return $this->hasMany(Post::class, ['user_id' => 'id']);
+    }
+
+    /**
+     * Gets query for [[Profiles]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getProfiles()
+    {
+        return $this->hasMany(Profile::class, ['user_id' => 'id']);
     }
 
     /**
@@ -134,15 +144,5 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function validatePassword($password)
     {
         return $this->password === $password;
-    }
-
-    /**
-     * Gets query for [[Profile]].
-     * 
-     * @return \yii\db\ActiveQuery
-     */
-    public function getProfile()
-    {
-        return $this->hasOne(Profile::class, ['id' => 'user_id']);
     }
 }
