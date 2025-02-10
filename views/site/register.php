@@ -32,9 +32,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
 
-                <?= $form->field($model, 'password') ?>
+                <?= $form->field($model, 'password')->passwordInput() ?>
 
-                <?= $form->field($model, 'repeatPassword') ?>
+                <?= $form->field($model, 'repeatPassword')->passwordInput() ?>
 
                 <div class="form-group">
                     <?= Html::submitButton('Cadastrar', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
