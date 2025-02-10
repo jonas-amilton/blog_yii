@@ -9,14 +9,13 @@ use Yii;
  *
  * @property int $id
  * @property int $user_id
- * @property int $avatar_id
  * @property string|null $bio
  * @property int $age
  * @property string|null $gender
  * @property string|null $created_at
  * @property string|null $updated_at
  *
- * @property Images $avatar
+ * @property Avatars[] $avatars
  * @property Users $user
  */
 class Profile extends \yii\db\ActiveRecord
@@ -35,12 +34,11 @@ class Profile extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'avatar_id', 'age'], 'required'],
-            [['user_id', 'avatar_id', 'age'], 'integer'],
+            [['user_id', 'age'], 'required'],
+            [['user_id', 'age'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['bio'], 'string', 'max' => 60],
             [['gender'], 'string', 'max' => 2],
-            [['avatar_id'], 'exist', 'skipOnError' => true, 'targetClass' => Image::class, 'targetAttribute' => ['avatar_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
@@ -52,24 +50,23 @@ class Profile extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user_id' => 'User ID',
-            'avatar_id' => 'Avatar ID',
+            'user_id' => 'ID do usuário',
             'bio' => 'Bio',
-            'age' => 'Age',
-            'gender' => 'Gender',
+            'age' => 'Idade',
+            'gender' => 'Sexo',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
     }
 
     /**
-     * Gets query for [[Avatar]].
+     * Gets query for [[Avatars]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getAvatar()
+    public function getAvatars()
     {
-        return $this->hasOne(Image::class, ['id' => 'avatar_id']);
+        return $this->hasMany(Avatar::class, ['avatar_id' => 'id']);
     }
 
     /**
