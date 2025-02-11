@@ -11,6 +11,7 @@ main > .container {
 .profile-img {
     border-radius: 50%;
     width: 20%;
+    max-height: 8em;
     position: absolute;
     bottom: -50px;
     left: 1em;
