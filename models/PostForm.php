@@ -63,7 +63,7 @@ class PostForm extends Model
         $modelUpload = new UploadForm();
         $this->image_file = UploadedFile::getInstance($this, 'image_file');
         $modelUpload->image_file = $this->image_file;
-        $modelUpload->upload($idCreatedPost);
+        $modelUpload->upload($idCreatedPost, 'posts');
 
         $nameUploadedImage = "{$modelUpload->image_file->baseName}_0{$idCreatedPost}";
 

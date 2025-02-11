@@ -62,7 +62,7 @@ class ProfileForm extends Model
         $modelUpload = new UploadForm();
         $this->image_file = UploadedFile::getInstance($this, 'image_file');
         $modelUpload->image_file = $this->image_file;
-        $modelUpload->upload($idCreatedProfile);
+        $modelUpload->upload($idCreatedProfile, 'avatars');
 
         $nameUploadedImage = "{$modelUpload->image_file->baseName}_0{$idCreatedProfile}";
 

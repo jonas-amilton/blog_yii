@@ -30,11 +30,11 @@ class UploadForm extends Model
         ];
     }
 
-    public function upload($idCreatedPost)
+    public function upload($idCreatedPost, $subfolder)
     {
         if ($this->validate()) {
 
-            $alias = Yii::getAlias('@uploads');
+            $alias = Yii::getAlias('@uploads') . "{$subfolder}/";
 
             $this->image_file->saveAs($alias . "{$this->image_file->baseName}_0{$idCreatedPost}" . '.' . $this->image_file->extension);
             return true;
@@ -43,10 +43,10 @@ class UploadForm extends Model
         }
     }
 
-    public static function delete($filename)
+    public static function delete($filename, $subfolder)
     {
-        $filenameToDelete = Yii::getAlias('@uploads') . $filename;
-
+        $filenameToDelete = Yii::getAlias('@uploads') . "{$subfolder}/{$filename}";
+        
         if ($filenameToDelete) {
             unlink($filenameToDelete);
 

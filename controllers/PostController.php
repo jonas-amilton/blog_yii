@@ -45,7 +45,7 @@ class PostController extends Controller
         if ($imageToDelete) {
             $filenameToDelete = "{$imageToDelete->name}.{$imageToDelete->extension}";
             $imageToDelete->delete();
-            UploadForm::delete($filenameToDelete);
+            UploadForm::delete($filenameToDelete, 'posts');
         }
 
         $postToDelete = Post::findOne($id);
