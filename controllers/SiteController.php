@@ -128,7 +128,7 @@ class SiteController extends Controller
         ) {
             Yii::$app->session->setFlash('registerFormSubmitted');
 
-            return $this->refresh();
+            return $this->redirect(['site/login']);
         }
 
         return $this->render('register', compact('model'));

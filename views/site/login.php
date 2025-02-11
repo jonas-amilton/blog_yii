@@ -15,6 +15,12 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="site-login">
     <h1><?= Html::encode($this->title) ?></h1>
 
+    <?php if (Yii::$app->session->hasFlash('registerFormSubmitted')): ?>
+        <div class="alert alert-success">
+            Usuário cadastrado com sucesso!
+        </div>
+    <?php endif; ?>
+
     <p>Faça login no Blog!</p>
 
     <div class="row">
