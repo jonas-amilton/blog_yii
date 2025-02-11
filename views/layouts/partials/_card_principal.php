@@ -14,7 +14,7 @@
                 <p class="card-text"><?= $lastPost->content; ?></p>
                 <p class="text-body-secondary">
                     <!--TODO: colocar link do perfil do usuário que publicou-->
-                    Publicado por <a href="#" class="text-reset">nome do usuário <?= $lastPost->user_id; ?></a>.
+                    Publicado por <a href="#" class="text-reset"><?= $lastPost->user->username; ?></a>.
                 </p>
                 <p class="card-text">
                     <small class="text-body-secondary">
