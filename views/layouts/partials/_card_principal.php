@@ -20,7 +20,6 @@ use yii\helpers\Url;
                 <p class="text-body-secondary">
                     Publicado por <a href="<?= Url::to([
                                                 'profile/user',
-                                                'username' => $lastPost->user->username,
                                                 'id' => $lastPost->user->id
                                             ]); ?>" class="text-reset"><?= $lastPost->user->username; ?></a>.
                 </p>
