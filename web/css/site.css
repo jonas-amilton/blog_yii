@@ -32,20 +32,34 @@ main > .container {
     right: 5%;
 }
 
-/* Botão de criar publicação */
-.btn-create-post {
-  background-color: #0a53be;
+/* Fixa os botões na parte inferior e define tamanho*/
+.btn-fixed {
   border: none;
-  color: #fff;
-  border-radius: 50%;
+  border-radius: 2em;
   height: 3.8em;
   position: fixed;
   bottom: 10%;
   right: 10%;
 }
 
+/* Botão de criar publicação */
+.btn-create-post {
+  background-color: #0a53be;
+  color: #fff;
+}
+
 .btn-create-post:hover {
   background-color: #0759d4;
+}
+
+/* Botão de personalizar usuário*/
+.btn-edit-profile {
+  background-color: #555f6f;
+  color: #fff;
+}
+
+.btn-edit-profile:hover {
+  background-color: #505864;
 }
 
 .footer {
