@@ -50,16 +50,6 @@ class ProfileForm extends Model
 
         $modelProfile->attributes = $this->attributes;
 
-        if ($modelProfile->validate()) {
-            return false;
-        }else{
-            var_dump($modelProfile->errors);
-            echo '<hr>';
-            var_dump($modelProfile->attributes);
-        }
-
-        die;
-
         $modelProfile->save();
 
         $this->uploadImage($modelProfile->id);
@@ -81,12 +71,12 @@ class ProfileForm extends Model
 
     private function saveImage($nameUploadedImage, $idCreatedProfile)
     {
-        $modelImage = new Image();
+        $modelAvatar = new Avatar();
 
-        $modelImage->extension = $this->image_file->extension;
-        $modelImage->name = $nameUploadedImage;
-        $modelImage->post_id = $idCreatedProfile;
+        $modelAvatar->extension = $this->image_file->extension;
+        $modelAvatar->name = $nameUploadedImage;
+        $modelAvatar->avatar_id = $idCreatedProfile;
 
-        $modelImage->save();
+        $modelAvatar->save();
     }
 }
