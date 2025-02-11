@@ -48,7 +48,7 @@ use yii\bootstrap5\{
 
                 <?= $form->field($modelProfileForm, 'bio')->textarea([
                     'rows' => 6,
-                    'value' => $profile->bio
+                    'value' => $profile->bio ?? null
                 ]) ?>
 
                 <?= $form->field($modelProfileForm, 'image_file')->fileInput() ?>
