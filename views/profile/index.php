@@ -3,7 +3,7 @@
         <img src="https://images.pexels.com/photos/268941/pexels-photo-268941.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             class="card-img-top profile-cover"
             alt="...">
-        <img src="<?= Yii::getAlias('@showImage/') . "{$profilePhoto}"; ?>"
+        <img src="<?= Yii::getAlias('@showAvatar/') . "{$profilePhoto}"; ?>"
             class="card-img-top profile-img"
             alt="...">
     </div>
@@ -52,5 +52,5 @@
 
 <?= $this->render(
     '../layouts/partials/_edit_profile_modal',
-    compact('modelProfileForm')
+    compact('modelProfileForm', 'profile')
 ); ?>

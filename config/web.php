@@ -13,7 +13,8 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
         '@web' => '/',
-        '@showImage' => '@web/uploads/',
+        '@showImage' => '@web/uploads/posts/',
+        '@showAvatar' => '@web/uploads/avatars/',
         '@webroot' => dirname(__DIR__) . '/web'
     ],
     'components' => [
