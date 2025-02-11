@@ -1,3 +1,8 @@
+<?php
+
+use yii\helpers\Url;
+?>
+
 <?php foreach ($posts as $post): ?>
     <?php if (isset($post)): ?>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
@@ -10,8 +15,11 @@
                 <?php endforeach; ?>
                 <div class="card-body">
                     <p class="text-body-secondary">
-                        <!--TODO: colocar link do perfil no username-->
-                        Publicado por <a href="#" class="text-reset"><?= $post->user->username; ?></a>.
+                        Publicado por <a href="<?= Url::to([
+                                                    'profile/user',
+                                                    'username' => $post->user->username,
+                                                    'id' => $post->user->id
+                                                ]); ?>" class="text-reset"><?= $post->user->username; ?></a>.
                     </p>
                     <p class="card-text">
                         <small class="text-body-secondary">

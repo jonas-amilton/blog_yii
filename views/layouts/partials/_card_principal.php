@@ -1,11 +1,16 @@
+<?php
+
+use yii\helpers\Url;
+?>
+
 <div class="card card-border-none mb-3" style="max-width: 100%;">
     <div class="row g-0">
         <div class="col-md-4">
             <?php foreach ($lastPost->images as $image): ?>
                 <img
-                src="<?= Yii::getAlias('@showImage/') . "{$image->name}.{$image->extension}"; ?>"
-                class="img-fluid rounded-start"
-                alt="<?= 'Imagem de ' . $lastPost->title; ?>">
+                    src="<?= Yii::getAlias('@showImage/') . "{$image->name}.{$image->extension}"; ?>"
+                    class="img-fluid rounded-start"
+                    alt="<?= 'Imagem de ' . $lastPost->title; ?>">
             <?php endforeach; ?>
         </div>
         <div class="col-md-8">
@@ -13,8 +18,11 @@
                 <h3 class="display-1"><?= $lastPost->title; ?></h3>
                 <p class="card-text"><?= $lastPost->content; ?></p>
                 <p class="text-body-secondary">
-                    <!--TODO: colocar link do perfil do usuário que publicou-->
-                    Publicado por <a href="#" class="text-reset"><?= $lastPost->user->username; ?></a>.
+                    Publicado por <a href="<?= Url::to([
+                                                'profile/user',
+                                                'username' => $lastPost->user->username,
+                                                'id' => $lastPost->user->id
+                                            ]); ?>" class="text-reset"><?= $lastPost->user->username; ?></a>.
                 </p>
                 <p class="card-text">
                     <small class="text-body-secondary">
