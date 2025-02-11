@@ -28,9 +28,19 @@ use yii\bootstrap5\{
             ]); ?>
             <div class="modal-body">
 
-                <?= $form->field($modelProfileForm, 'age')->textInput(['autofocus' => true]) ?>
+                <?= $form->field($modelProfileForm, 'age')->input(
+                    'number',
+                    [
+                        'min' => 16,
+                        'max' => 99,
+                        'autofocus' => true
+                    ]
+                ) ?>
 
-                <?= $form->field($modelProfileForm, 'gender')->textInput() ?>
+                <?= $form->field($modelProfileForm, 'gender')->dropDownList([
+                    'M' => 'Masculino',
+                    'F' => 'Feminino',
+                ], ['prompt' => 'Selecione seu sexo']) ?>
 
                 <?= $form->field($modelProfileForm, 'bio')->textarea(['rows' => 6]) ?>
 
