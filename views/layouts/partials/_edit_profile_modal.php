@@ -33,16 +33,23 @@ use yii\bootstrap5\{
                     [
                         'min' => 16,
                         'max' => 99,
-                        'autofocus' => true
+                        'autofocus' => true,
+                        'value' => $profile->age ?? null
                     ]
                 ) ?>
 
                 <?= $form->field($modelProfileForm, 'gender')->dropDownList([
                     'M' => 'Masculino',
                     'F' => 'Feminino',
-                ], ['prompt' => 'Selecione seu sexo']) ?>
+                ], [
+                    'prompt' => 'Selecione seu sexo',
+                    'value' => $profile->gender ?? null
+                ]) ?>
 
-                <?= $form->field($modelProfileForm, 'bio')->textarea(['rows' => 6]) ?>
+                <?= $form->field($modelProfileForm, 'bio')->textarea([
+                    'rows' => 6,
+                    'value' => $profile->bio
+                ]) ?>
 
                 <?= $form->field($modelProfileForm, 'image_file')->fileInput() ?>
 
