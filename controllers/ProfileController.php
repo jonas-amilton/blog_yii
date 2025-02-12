@@ -3,7 +3,7 @@
 namespace app\controllers;
 
 use app\models\ProfileForm;
-use app\models\User;
+use app\services\UserService;
 use yii\web\Controller;
 use Yii;
 
@@ -12,24 +12,11 @@ class ProfileController extends Controller
     public function actionIndex()
     {
         $modelProfileForm = new ProfileForm();
+        $userService = new UserService(Yii::$app->user->identity->id);
 
-        $user = User::findOne(['id' => Yii::$app->user->identity->id]);
-        $profile = null;
-        $posts = [];
-
-        if ($user) {
-            $posts = $user->posts;
-
-            if ($user->profiles) {
-                $profile = array_reverse($user->profiles)[0];
-
-                $profilePhoto = "{$profile->avatars[0]->name}.{$profile->avatars[0]->extension}";
-            }
-        }
-
-        if (!$profile) {
-            $profilePhoto = 'avatar-default.png';
-        }
+        $posts = $userService->getPostByUser();
+        $profile = $userService->getProfile();
+        $profilePhoto = $userService->getProfilePhoto();
 
         return $this->render(
             'index',
@@ -62,5 +49,29 @@ class ProfileController extends Controller
 
             return $this->redirect(['profile/index']);
         }
+    }
+
+    public function actionUser($id)
+    {
+        if (Yii::$app->user->identity->id == $id) {
+            return $this->redirect(['profile/index']);
+        }
+
+        $userService = new UserService($id);
+
+        $user = $userService->getUser();
+        $posts = $userService->getPostByUser();
+        $profile = $userService->getProfile();
+        $profilePhoto = $userService->getProfilePhoto();
+
+        return $this->render(
+            'user',
+            compact(
+                'profile',
+                'profilePhoto',
+                'posts',
+                'user'
+            )
+        );
     }
 }
