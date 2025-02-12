@@ -10,7 +10,7 @@ main > .container {
 /* Foto de perfil */
 .profile-img {
     border-radius: 50%;
-    width: 20%;
+    max-width: 8em;
     max-height: 8em;
     position: absolute;
     bottom: -50px;
