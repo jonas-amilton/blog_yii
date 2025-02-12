@@ -16,6 +16,8 @@ main > .container {
     bottom: -50px;
     left: 1em;
     z-index: 1;
+    aspect-ratio: 1/1;
+    object-fit: cover;
 }
 
 /* Capa do perfil */
